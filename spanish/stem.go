@@ -1,9 +1,10 @@
 package spanish
 
 import (
-	"github.com/kljensen/snowball/snowballword"
 	"log"
 	"strings"
+
+	"github.com/vseledkin/snowball/snowballword"
 )
 
 func printDebug(debug bool, w *snowballword.SnowballWord) {
@@ -20,7 +21,7 @@ func Stem(word string, stemStopwWords bool) string {
 	word = strings.ToLower(strings.TrimSpace(word))
 
 	// Return small words and stop words
-	if len(word) <= 2 || (stemStopwWords == false && isStopWord(word)) {
+	if len(word) <= 2 || (stemStopwWords == false && IsStopWord(word)) {
 		return word
 	}
 

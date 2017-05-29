@@ -1,8 +1,9 @@
 package french
 
 import (
-	"github.com/kljensen/snowball/snowballword"
 	"strings"
+
+	"github.com/vseledkin/snowball/snowballword"
 )
 
 // Stem an French word.  This is the only exported
@@ -13,7 +14,7 @@ func Stem(word string, stemStopwWords bool) string {
 	word = strings.ToLower(strings.TrimSpace(word))
 
 	// Return small words and stop words
-	if len(word) <= 2 || (stemStopwWords == false && isStopWord(word)) {
+	if len(word) <= 2 || (stemStopwWords == false && IsStopWord(word)) {
 		return word
 	}
 

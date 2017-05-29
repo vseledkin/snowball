@@ -1,8 +1,8 @@
 package french
 
 import (
-	"github.com/kljensen/snowball/romance"
-	"github.com/kljensen/snowball/snowballword"
+	"github.com/vseledkin/snowball/romance"
+	"github.com/vseledkin/snowball/snowballword"
 	"testing"
 )
 

@@ -1,8 +1,9 @@
 package russian
 
 import (
-	"github.com/kljensen/snowball/snowballword"
 	"strings"
+
+	"github.com/vseledkin/snowball/snowballword"
 )
 
 // Stem an Russian word.  This is the only exported
@@ -14,7 +15,7 @@ func Stem(word string, stemStopwWords bool) string {
 	w := snowballword.New(word)
 
 	// Return small words and stop words
-	if len(w.RS) <= 2 || (stemStopwWords == false && isStopWord(word)) {
+	if len(w.RS) <= 2 || (stemStopwWords == false && IsStopWord(word)) {
 		return word
 	}
 

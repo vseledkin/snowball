@@ -9,8 +9,8 @@ package english
 import (
 	"testing"
 
-	"github.com/kljensen/snowball/romance"
-	"github.com/kljensen/snowball/snowballword"
+	"github.com/vseledkin/snowball/romance"
+	"github.com/vseledkin/snowball/snowballword"
 )
 
 // Test stopWords for things we know should be true
@@ -26,7 +26,7 @@ func Test_stopWords(t *testing.T) {
 		"was",
 	}
 	for _, word := range knownTrueStopwords {
-		if isStopWord(word) == false {
+		if IsStopWord(word) == false {
 			t.Errorf("Expected %v, to be in stopWords", word)
 		}
 	}
@@ -39,7 +39,7 @@ func Test_stopWords(t *testing.T) {
 		"bullschnizzle",
 	}
 	for _, word := range knownFalseStopwords {
-		if isStopWord(word) == true {
+		if IsStopWord(word) == true {
 			t.Errorf("Expected %v, to be in stopWords", word)
 		}
 	}

@@ -3,10 +3,10 @@ package snowball
 import (
 	"fmt"
 
-	"github.com/kljensen/snowball/english"
-	"github.com/kljensen/snowball/french"
-	"github.com/kljensen/snowball/russian"
-	"github.com/kljensen/snowball/spanish"
+	"github.com/vseledkin/snowball/english"
+	"github.com/vseledkin/snowball/french"
+	"github.com/vseledkin/snowball/russian"
+	"github.com/vseledkin/snowball/spanish"
 )
 
 const (
@@ -36,25 +36,23 @@ func Stem(word, language string, stemStopWords bool) (stemmed string, err error)
 
 }
 
-// IsStop test if a word is stop wort in the specified language.
+// IsStopWord test if a word is stop wort in the specified language.
 //
-func IsStop(word, language string) (stemmed string, err error) {
+func IsStopWord(word, language string) (ok bool, err error) {
 
-	var f func(string, bool) string
+	var f func(word string) bool
 	switch language {
 	case "english":
-		f = english.IsStop
+		f = english.IsStopWord
 	case "spanish":
-		f = spanish.Stem
+		f = spanish.IsStopWord
 	case "french":
-		f = french.Stem
+		f = french.IsStopWord
 	case "russian":
-		f = russian.Stem
+		f = russian.IsStopWord
 	default:
 		err = fmt.Errorf("Unknown language: %s", language)
 		return
 	}
-	stemmed = f(word, stemStopWords)
-	return
-
+	return f(word), nil
 }
